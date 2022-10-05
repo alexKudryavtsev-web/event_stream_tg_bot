@@ -1,11 +1,15 @@
 import { useEffect } from 'react';
-
-const tg = window.Telegram.WebApp;
+import { useTelegram } from './hooks/useTelegram';
 
 function App() {
+  const { tg, user } = useTelegram();
+
   useEffect(() => {
     tg.ready();
-  }, []);
+
+    tg.MainButton.show();
+    console.log(user);
+  }, [tg, user]);
 
   return (
     <div>

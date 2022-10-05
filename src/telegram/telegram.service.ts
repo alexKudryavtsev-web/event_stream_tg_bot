@@ -71,8 +71,10 @@ export class TelegramService {
     });
   }
 
-  async notify(chatId: string, message: string) {
-    this.bot.sendMessage(chatId, message);
+  async notify(telegramId: string, message: string) {
+    this.bot.sendMessage(telegramId, message, {
+      parse_mode: 'Markdown',
+    });
   }
 
   async _newChat(chatId: number): Promise<void> {
